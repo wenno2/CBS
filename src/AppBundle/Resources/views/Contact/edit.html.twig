@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+            <div data-role="page"  >
+            <div class="ui-grid-a" date-role="main">
+    <h1>Contact edit</h1>
+
+    {{ form(edit_form) }}
+
+
+        <a href="{{ path('contact') }}" data-ajax="false" class="ui-btn" >
+            Back to the list
+        </a>
+    {{ form(delete_form) }}
+            </div>
+            </div>
+{% endblock %}

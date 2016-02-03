@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme edit_form _self %}
+
+{%- block date_widget -%}
+    {%- if widget == 'single_text' -%}
+    <div class="datepicker">
+        {%- set type = type|default('text') -%}
+        
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ data|date("l, d M, Y") }}" {% endif %}/>
+    </div>
+    {%- else -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw -}}
+        </div>
+    {%- endif -%}
+{%- endblock date_widget -%}
+
+{% block body -%}
+        <div data-role="page"  >
+            <div class="ui-grid-a" date-role="main">
+    <h1>Period edit</h1>
+
+    {{ form(edit_form) }}
+
+
+        <a href="{{ path('period') }}" data-ajax="false" class="ui-btn" >
+            Back to the list
+        </a>
+
+    {{ form(delete_form) }}
+            </div>
+        </div>
+{% endblock %}

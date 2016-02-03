@@ -3,11 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block stylesheets %}
+            {% stylesheets 'css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+                <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+
+            {% block body %}{% endblock %}
+
+
+
+        {% block javascripts %}
+        <script type='text/javascript' src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/jquery.tokenize.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/selectize.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/picker.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/picker.date.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/app.js') }}"></script>
+
+        {% endblock %}
     </body>
 </html>

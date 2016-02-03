@@ -1,0 +1,16 @@
+/* scaffolding */
+/* ----------- */
+.ui-filter-inset {
+    margin-top: 0;
+}
+
+.ui-grid-a {
+    width:300px;
+    margin:0 auto 0 auto;
+}
+
+.form-group {
+    margin-bottom:30px;
+}
+
+ul.pagination li { float:left; margin-bottom:20px; list-style-type: none;}

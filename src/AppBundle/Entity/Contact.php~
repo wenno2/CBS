@@ -1,0 +1,30 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Contact")
+ */
+class Contact extends Person 
+{
+        /**
+     * @ORM\OneToMany(targetEntity="FamilyMember", mappedBy="contact")
+     */
+    protected $members;
+    
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }    
+}

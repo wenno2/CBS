@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+        <div data-role="page"  >
+            <div class="ui-grid-a" date-role="main">
+    <h1>Live list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Draft</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('live_show', { 'id': entity.id }) }}" data-ajax="false" class="ui-btn" >{{ entity.id }}</a></td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.endDate %}{{ entity.endDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.draft }}</td>
+                <td>
+                
+            
+                  
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                        <a href="{{ path('live_show', { 'id': entity.id }) }}" data-ajax="false" class="ui-btn" >show</a>
+                   
+                        <a href="{{ path('live_edit', { 'id': entity.id }) }}" data-ajax="false" class="ui-btn" >edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+        
+   
+            <a href="{{ path('live_new') }}" data-ajax="false" class="ui-btn" >
+                Create a new entry
+            </a>
+            </div>
+        </div>
+    {% endblock %}

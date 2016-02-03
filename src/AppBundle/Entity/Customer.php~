@@ -1,0 +1,79 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"familyMember" = "FamilyMember", "friend" = "Friend"})
+ */
+class Customer extends Person
+{
+    
+    
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $address;
+    
+     /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }     
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * 
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+       
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * 
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * 
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        
+    }
+}
